@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { RegisteredEventsProvider } from './RegisteredEventsContext'; // Import the context provider
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import FriendsPage from './FriendsPage';
@@ -10,6 +11,7 @@ import './App.css';
 
 function App() {
   return (
+    <RegisteredEventsProvider>
     <Router>
       <div className="app-container">
         <Routes>
@@ -22,6 +24,7 @@ function App() {
         <Navbar />
       </div>
     </Router>
+    </RegisteredEventsProvider>
   );
 }
 

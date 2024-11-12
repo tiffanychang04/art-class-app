@@ -1,25 +1,48 @@
+// HomePage.js
 import React from 'react';
+import { useRegisteredEvents } from './RegisteredEventsContext'; // Import the context hook
 
 function HomePage() {
+  const { registeredEvents } = useRegisteredEvents(); // Access registered events from context
+
   return (
     <div className="home-page">
       <div className="welcome-section">
         <h1>Welcome back, Iris!</h1>
-        <h2>Upcoming Events</h2>
+        <h2>Your Upcoming Events</h2>
       </div>
-      
-      <div className="upcoming-events card">
-        <div className="event-details">
-          <h3>Pottery with Sarah</h3>
-          <p>10/29, 3:00–5:00 pm</p>
-          <p>4917 Pine Street</p>
-        </div>
+
+      <div className="registered-events">
+        {registeredEvents.length > 0 ? (
+          registeredEvents.map((event, index) => {
+            // Format start time and end time like before
+            const startDate = new Date(event.start_datetime);
+            const formattedStartDate = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            const formattedStartTime = startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            const endDate = new Date(startDate.getTime() + event.duration * 60 * 60 * 1000);
+            const formattedEndTime = endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+            return (
+              <div key={index} className="upcoming-events card">
+                <div className="event-details">
+                  <h3>{event.name} with {event.instructor}</h3>
+                  <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
+                  <p>{event.location}</p>
+                  <button disabled>Registered</button> {/* Disabled button */}
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p>No registered events.</p>
+        )}
       </div>
 
       <h2>Your Feed</h2>
       <div className="feed-section card">
         <p>Maya attended Portrait Drawings, hosted by George.</p>
       </div>
+
     </div>
   );
 }
