@@ -4,6 +4,9 @@ import { useRegisteredEvents } from './RegisteredEventsContext'; // Import the c
 
 function HomePage() {
   const { registeredEvents } = useRegisteredEvents(); // Access registered events from context
+  const getInitials = (name) => {
+    return name.split(' ').map((part) => part[0]).join('');
+  };
 
   return (
     <div className="home-page">
@@ -40,7 +43,10 @@ function HomePage() {
 
       <h2>Your Feed</h2>
       <div className="feed-section card">
+      <div className="activity-item">
+      <div className="initials-circle">{getInitials("Maya Johnson")}</div>
         <p>Maya attended Portrait Drawings, hosted by George.</p>
+      </div>
       </div>
 
     </div>
