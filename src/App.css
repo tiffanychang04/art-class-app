@@ -27,6 +27,16 @@ h2 {
   color: #19445f;
 }
 
+h3 {
+  font-weight: 600;
+  font-family: palatino, serif;
+  font-weight: bold;
+  margin: 20px 20px 10px;
+  font-size: 1.5em;
+  color: #19445f;
+  text-align: center;
+}
+
 /* Card Style */
 .card {
   background: #ffffff;
@@ -35,6 +45,9 @@ h2 {
   margin: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Input and Button Styling */
@@ -164,5 +177,32 @@ input::placeholder {
 
 .search-results li:last-child {
   border-bottom: none;
+}
+
+.username {
+  margin: 20px 0;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  text-align: center;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
 }
 
