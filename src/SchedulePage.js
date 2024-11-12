@@ -70,30 +70,33 @@ function SchedulePage() {
       {/* Filters */}
       <div className="filters">
         <select value={categoryFilter} onChange={handleCategoryChange}>
-          <option value="">All Categories</option>
+          <option value="">Filter by Category</option>
           <option value="Painting">Painting</option>
           <option value="Sculpture">Sculpture</option>
           <option value="Drawing">Drawing</option>
           <option value="Photography">Photography</option>
         </select>
-
+      </div>
         {/* Date Range Filter */}
         <div className="date-range-filter">
-          <label>Start Date:</label>
+        <div className="date-labels">
+          <label for="start-date">Start Date</label>
+          <label for="end-date">End Date</label>
+        </div>
+        <div className="date-inputs">
           <input
             type="date"
             value={dateFilterStart}
             onChange={handleDateStartChange}
           />
-          <label>End Date:</label>
+          
           <input
             type="date"
             value={dateFilterEnd}
             onChange={handleDateEndChange}
           />
         </div>
-      </div>
-
+        </div>
       <h2>Nearby Events</h2>
       <div className="nearby-events">
         {filteredItems.length > 0 ? (
