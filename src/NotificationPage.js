@@ -12,6 +12,8 @@ function NotificationPage() {
       <div className="reminders card">
         <p>Don't forget your pottery class on Nov 20!</p>
       </div>
+
+      <h4> No other new activity</h4>
     </div>
   );
 }
