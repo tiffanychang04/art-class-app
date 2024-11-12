@@ -74,6 +74,7 @@ function SchedulePage() {
           <option value="Painting">Painting</option>
           <option value="Sculpture">Sculpture</option>
           <option value="Drawing">Drawing</option>
+          <option value="Photography">Photography</option>
         </select>
 
         {/* Date Range Filter */}
