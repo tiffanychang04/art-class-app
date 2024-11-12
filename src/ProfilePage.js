@@ -25,12 +25,12 @@ function ProfilePage() {
   return (
     <div className="profile-page">
       <div className="profile-info card">
-        <input type="file" onChange={handlePhotoUpload} />
         {profilePhoto ? (
           <img src={profilePhoto} alt="Profile" className="profile-photo" />
         ) : (
           <img src="https://via.placeholder.com/150?text=Profile+Photo" alt="Default Profile" className="profile-photo" />
         )}
+        <input type="file" onChange={handlePhotoUpload} />
         <h2 className="username">{username}</h2>
         <button onClick={() => setUsername(prompt('New Username:', username))}>
           Edit Username
