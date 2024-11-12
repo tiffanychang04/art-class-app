@@ -37,6 +37,14 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  font-family: trebuchet ms;
+  margin: 20px 20px 10px;
+  font-size: 1.0em;
+  color: #19445f;
+  text-align: center;
+}
+
 /* Card Style */
 .card {
   background: #ffffff;
@@ -206,3 +214,72 @@ input[type="file"] {
   margin-bottom: 20px;
 }
 
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  text-align: left;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* FRIENDS PAGE */
+.initials-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.mini-profile-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.mini-profile-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: calc(50% - 15px);
+  box-sizing: border-box;
+}
+
+.profile-details {
+  flex-grow: 1;
+}
+
+.profile-name {
+  font-weight: bold;
+  color: #19445f
+}
+
+.profile-location {
+  font-size: 0.9em;
+  color: #5a765b;
+}
+
+.add-friend-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #5a765b;
+  color: white;
+  cursor: pointer;
+}
+
+.add-friend-button:hover {
+  background-color: #5a765b;
+}
