@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPaintBrush, FaPencilAlt, FaCamera } from 'react-icons/fa'; // Import category icons
+import { FaPaintBrush, FaPencilAlt, FaCamera, FaPlus } from 'react-icons/fa'; // Import category icons
 import { GiPaintedPottery } from "react-icons/gi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { items } from './events'; // Import the events array
@@ -7,6 +7,8 @@ import EventCard from './EventCard'; // Import the EventCard component
 import Search from './Search'; // Import the Search component
 import { useRegisteredEvents } from './RegisteredEventsContext'; // Import context hook for managing registered events
 import Popup from './Popup'; 
+import CreateEventForm from './CreateEventForm'; // Assuming you have a modal or another component to open
+
 
 function SchedulePage() {
   const { registeredEvents, addEvent, removeEvent } = useRegisteredEvents(); // Access registered events and functions to add/remove events
@@ -19,6 +21,8 @@ function SchedulePage() {
   const [endTime, setEndTime] = useState(1440); // End time in minutes
   const [distance, setDistance] = useState(0);
   const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [isCreateEventVisible, setCreateEventVisible] = useState(false); // State to manage visibility of CreateEventForm
+
 
   // Filter items based on search, category, and date filters
   useEffect(() => {
@@ -120,7 +124,25 @@ function SchedulePage() {
     setEndTime(1440); 
     setDistance(0);
   }
+  
+  const defaultImageUrl = "https://crafty-clayworks.com/cdn/shop/articles/text-to-image_8413ca9e-8c51-4cb8-839e-478b81c055ea.png?v=1710431363"; // Replace this URL with your actual default image URL
 
+  const handleSaveEvent = (eventData) => {
+    const completedEventData = {
+      ...eventData,
+      backgroundImage: eventData.image || defaultImageUrl,
+      start_datetime: new Date(eventData.startDate + 'T' + eventData.startTime).toISOString(),
+      // Ensure the data structure matches your overall event data expectations
+    };
+  
+    console.log("Saving event with data:", completedEventData);
+    setFilteredItems(prevItems => [...prevItems, completedEventData]);
+    setCreateEventVisible(false); // Optionally close the form popup after saving
+  };
+
+  const toggleCreateEventForm = () => {
+    setCreateEventVisible(!isCreateEventVisible);
+  };
 
   // Add event listener to handle click outside
   React.useEffect(() => {
@@ -132,10 +154,10 @@ function SchedulePage() {
   return (
     <div className="schedule-page">
       <div class="schedule-header">
-      <h2>Search Events</h2>
-      <button class="rounded" onClick={resetFilters}>
-        <p>Reset Filters</p>
-      </button>
+      <h2 style={{ whiteSpace: 'nowrap' }}>Search Events</h2>
+      <button class="rounded" onClick={toggleCreateEventForm}>
+        <FaPlus /> New Event
+        </button>
       </div>
       <Search searchTerm={searchTerm} onSearchChange={handleSearch} />
       
@@ -159,8 +181,13 @@ function SchedulePage() {
         </div>
       </div>
 
-      {/* Search by Class Type with Icons */}
-      <h2>Search by Class Type</h2>
+      <div class="schedule-header">
+      <h2 style={{ whiteSpace: 'nowrap' }}>Search By Class Type</h2>
+      <button class="rounded" onClick={resetFilters}>
+        <p>Reset Filters</p>
+        </button>
+      </div>
+
 
       <div className="category-icons">
         <div id="painting-icon">
@@ -225,6 +252,9 @@ function SchedulePage() {
         <span>Distance</span>
       </label>
     </div>
+
+
+
     <button onClick={() => setSortPopupVisible(false)}>Sort</button>
         </Popup>
 
@@ -281,6 +311,11 @@ function SchedulePage() {
             <button onClick={() => setDistancePopupVisible(false)}>Apply</button>
         </Popup>
 
+
+      <Popup isOpen={isCreateEventVisible} onClose={toggleCreateEventForm} title="Create New Event">
+      <CreateEventForm onSave={handleSaveEvent} />
+      </Popup>
+
       {/* Nearby Events */}
       <h2>Nearby Events</h2>
       <div className="nearby-events">
@@ -300,6 +335,7 @@ function SchedulePage() {
       </div>
     </div>
   );
+
 }
 
 export default SchedulePage;
