@@ -149,7 +149,14 @@ input::placeholder {
 
 
 /* Event card styling */
-.event-card button {
+.upcoming-events-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0px 10px;
+  text-align: center;
+}
+.upcoming-events-card button {
   background-color: #7f6294;
   color: #ffffff;
   font-weight: bold;
@@ -161,8 +168,10 @@ input::placeholder {
   transition: background-color 0.3s;
 }
 
-.event-card button:hover {
-  background-color: #432a56;
+.nearby-events {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 

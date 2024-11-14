@@ -11,7 +11,7 @@ function EventCard({ event, isRegistered, onRegister, onUnregister }) {
   const formattedEndTime = endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
   return (
-    <div className="upcoming-events card">
+    <div className="upcoming-events-card">
       <div className="event-details">
         <h3>{event.name} with {event.instructor}</h3>
         <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
