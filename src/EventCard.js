@@ -12,7 +12,6 @@ function EventCard({ event, isRegistered, onRegister, onUnregister }) {
 
   return (
     <div className="upcoming-events-card" style={{ backgroundImage: `url(${event.backgroundImage})` }}>
-      <div className = "event-overlay">
         <div className="event-details">
           <h3>{event.name} with {event.instructor}</h3>
           <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
@@ -28,7 +27,6 @@ function EventCard({ event, isRegistered, onRegister, onUnregister }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
