@@ -32,12 +32,31 @@ function SchedulePage() {
       const matchesSearch = searchTerm === "" || 
                             event.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             event.instructor.toLowerCase().includes(searchTerm.toLowerCase());
-
-      return matchesSearch && matchesCategory && matchesDateRange;
+      const eventStartMinutes = eventDate.getHours() * 60 + eventDate.getMinutes();
+        const matchesTimeRange = (
+        (startTime <= eventStartMinutes) &&
+        (endTime >= eventStartMinutes + event.duration * 60)
+      );
+      const matchesDistance = distance ? event.distance <= distance : true;
+      return matchesSearch && matchesCategory && matchesDateRange && matchesTimeRange && matchesDistance;
     });
 
-    setFilteredItems(filtered);
-  }, [searchTerm, categoryFilter, dateFilterStart, dateFilterEnd]);
+    // Sorting logic based on selectedSortOption
+  const sorted = [...filtered].sort((a, b) => {
+    switch (selectedSortOption) {
+      case "Class Name":
+        return a.name.localeCompare(b.name);
+      case "Date":
+        return new Date(a.start_datetime) - new Date(b.start_datetime);
+      case "Distance":
+        return a.distance - b.distance; // Assumes `distance` is a numeric field in each event
+      default:
+        return 0;
+    }
+  });
+  
+  setFilteredItems(sorted);
+  }, [searchTerm, categoryFilter, dateFilterStart, dateFilterEnd, startTime, endTime, distance, selectedSortOption]);
 
   const handleCategoryClick = (category) => {
     setCategoryFilter(category);
@@ -170,7 +189,7 @@ function SchedulePage() {
           checked={selectedSortOption === 'Class Name'}
           onChange={handleSortOption}
         />
-        Class Name
+        <span>Class Name</span>
       </label>
       <label>
         <input
@@ -179,7 +198,7 @@ function SchedulePage() {
           checked={selectedSortOption === 'Date'}
           onChange={handleSortOption}
         />
-        Date
+        <span>Date</span>
       </label>
       <label>
         <input
@@ -188,9 +207,10 @@ function SchedulePage() {
           checked={selectedSortOption === 'Distance'}
           onChange={handleSortOption}
         />
-        Distance
+        <span>Distance</span>
       </label>
     </div>
+    <button onClick={() => setSortPopupVisible(false)}>Sort</button>
         </Popup>
 
         <button onClick={toggleTimePopup}>
