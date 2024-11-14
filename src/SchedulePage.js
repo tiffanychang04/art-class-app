@@ -6,6 +6,7 @@ import { items } from './events'; // Import the events array
 import EventCard from './EventCard'; // Import the EventCard component
 import Search from './Search'; // Import the Search component
 import { useRegisteredEvents } from './RegisteredEventsContext'; // Import context hook for managing registered events
+import Popup from './Popup'; 
 
 function SchedulePage() {
   const { registeredEvents, addEvent, removeEvent } = useRegisteredEvents(); // Access registered events and functions to add/remove events
@@ -14,6 +15,10 @@ function SchedulePage() {
   const [dateFilterStart, setDateFilterStart] = useState(''); // State for start date filter
   const [dateFilterEnd, setDateFilterEnd] = useState(''); // State for end date filter
   const [filteredItems, setFilteredItems] = useState(items); // State for filtered events
+  const [startTime, setStartTime] = useState(0); // Start time in minutes
+  const [endTime, setEndTime] = useState(1440); // End time in minutes
+  const [distance, setDistance] = useState(0);
+  const [selectedSortOption, setSelectedSortOption] = useState('');
 
   // Filter items based on search, category, and date filters
   useEffect(() => {
@@ -38,6 +43,10 @@ function SchedulePage() {
     setCategoryFilter(category);
   };
 
+  const handleSortOption = (event) => {
+    setSelectedSortOption(event.target.value);
+  };
+
   
     // Handle search term change
     const handleSearch = (event) => {
@@ -45,10 +54,8 @@ function SchedulePage() {
       setSearchTerm(query);
     };
 
-    const [isPopupVisible, setPopupVisible] = useState(false); // State to toggle popup visibility
-  const [startTime, setStartTime] = useState(0); // Start time in minutes
-  const [endTime, setEndTime] = useState(1440); // End time in minutes
-
+  const [isTimePopupVisible, setTimePopupVisible] = useState(false); // State to toggle popup visibility
+  
   // Convert time in minutes to HH:MM format
   const convertMinutesToTime = (minutes) => {
     const hours = Math.floor(minutes / 60);
@@ -56,17 +63,35 @@ function SchedulePage() {
     return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}`;
   };
 
-  // Function to toggle popup visibility
-  const togglePopup = () => {
-    setPopupVisible((prev) => !prev);
+  // Function to toggle time popup visibility
+  const toggleTimePopup = () => {
+    setTimePopupVisible((prev) => !prev);
+  };
+
+  const [isDistancePopupVisible, setDistancePopupVisible] = useState(false); // State to toggle popup visibility
+  
+
+  // Function to toggle distance popup visibility
+  const toggleDistancePopup = () => {
+    setDistancePopupVisible((prev) => !prev);
+  };
+
+  const [isSortPopupVisible, setSortPopupVisible] = useState(false); // State to toggle popup visibility
+  
+  // Function to toggle time popup visibility
+  const toggleSortPopup = () => {
+    setSortPopupVisible((prev) => !prev);
   };
 
   // Close the popup when clicking outside
   const handleClickOutside = (e) => {
     if (!e.target.closest('.popup-content') && !e.target.closest('button')) {
-      setPopupVisible(false);
+      setTimePopupVisible(false);
+      setDistancePopupVisible(false);
+      setSortPopupVisible(false);
     }
   };
+
 
   // Add event listener to handle click outside
   React.useEffect(() => {
@@ -131,19 +156,49 @@ function SchedulePage() {
       </div>
 
       <div className="filters">
-        <button>
-          <span>Sort by</span>
+        <button onClick={toggleSortPopup}>
+      <span>Sort by</span>
           <RiArrowDropDownLine size={20}/>
         </button>
+      <Popup isOpen={isSortPopupVisible} onClose={toggleSortPopup} title="Sort by">
+          
+      <div class="radio-group">
+      <label>
+        <input
+          type="radio"
+          value="Class Name"
+          checked={selectedSortOption === 'Class Name'}
+          onChange={handleSortOption}
+        />
+        Class Name
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="Date"
+          checked={selectedSortOption === 'Date'}
+          onChange={handleSortOption}
+        />
+        Date
+      </label>
+      <label>
+        <input
+          type="radio"
+          value="Distance"
+          checked={selectedSortOption === 'Distance'}
+          onChange={handleSortOption}
+        />
+        Distance
+      </label>
+    </div>
+        </Popup>
 
-        <button onClick={togglePopup}>
+        <button onClick={toggleTimePopup}>
         <span>Time</span>
           <RiArrowDropDownLine size={20}/>
         </button>
 
-        {isPopupVisible && (
-        <div className="popup-overlay">
-          <div className="popup-content">
+        <Popup isOpen={isTimePopupVisible} onClose={toggleTimePopup} title="Select Time Range">
             <div>
               <label>Start Time: {convertMinutesToTime(startTime)}</label>
               <input
@@ -169,16 +224,27 @@ function SchedulePage() {
               
             </div>
 
-            <button onClick={() => setPopupVisible(false)}>Apply</button>
-          </div>
-        </div>
-      )}
+            <button onClick={() => setTimePopupVisible(false)}>Apply</button>
+        </Popup>
 
-        <button>
+        <button onClick={toggleDistancePopup}>
         <span>Distance</span>
           <RiArrowDropDownLine size={20}/>
         </button>
       </div>
+
+      <Popup isOpen={isDistancePopupVisible} onClose={toggleDistancePopup} title="Find classes within">
+      <label>{distance} miles</label> 
+      <input
+                type="range"
+                min="0"
+                max="20"
+                value={distance}
+                onChange={(e) => setDistance(Number(e.target.value))}
+                step="1"
+              />
+            <button onClick={() => setDistancePopupVisible(false)}>Apply</button>
+        </Popup>
 
       {/* Nearby Events */}
       <h2>Nearby Events</h2>

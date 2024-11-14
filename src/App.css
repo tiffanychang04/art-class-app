@@ -377,6 +377,17 @@ input[type="file"] {
   gap: 10px;
 }
 
+/* Close Button */ 
+.popup-content .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
 /* Range sliders */
 input[type="range"] {
   -webkit-appearance: none;  /* Remove default styling in WebKit-based browsers */
@@ -398,6 +409,31 @@ input[type="range"] {
   background-color: #7f6294; /* Thumb color */
   border-radius: 50%; /* Make it round */
   cursor: pointer; /* Change cursor to indicate interaction */
+}
+
+/* Sort by */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  gap: 0px; /* Space between radio buttons */
+  border: black solid 1px;
+}
+
+.radio-group input[type="radio"] {
+  margin: 10px; /* Space between the radio button and label */
+  padding: 0px;
+  border: black solid 5px;
+}
+
+.radio-group label {
+  font-size: 16px; /* Style the label text */
+  cursor: pointer; /* Makes the label clickable */
+  text-align: left;
+  display: flex;
+  gap: 0px;
+  align-items: center;
+  border: black solid 5px;
 }
 
 
