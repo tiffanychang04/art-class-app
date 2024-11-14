@@ -1,9 +1,10 @@
 // HomePage.js
 import React from 'react';
 import { useRegisteredEvents } from './RegisteredEventsContext'; // Import the context hook
+import EventCard from './EventCard'; // Import the EventCard component
 
 function HomePage() {
-  const { registeredEvents } = useRegisteredEvents(); // Access registered events from context
+  const { registeredEvents, addEvent, removeEvent } = useRegisteredEvents(); // Access registered events from context
   const getInitials = (name) => {
     return name.split(' ').map((part) => part[0]).join('');
   };
@@ -19,21 +20,20 @@ function HomePage() {
         {registeredEvents.length > 0 ? (
           registeredEvents.map((event, index) => {
             // Format start time and end time like before
-            const startDate = new Date(event.start_datetime);
-            const formattedStartDate = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-            const formattedStartTime = startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
-            const endDate = new Date(startDate.getTime() + event.duration * 60 * 60 * 1000);
-            const formattedEndTime = endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            // const startDate = new Date(event.start_datetime);
+            // const formattedStartDate = startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            // const formattedStartTime = startDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+            // const endDate = new Date(startDate.getTime() + event.duration * 60 * 60 * 1000);
+            // const formattedEndTime = endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
             return (
-              <div key={index} className="upcoming-events card">
-                <div className="event-details">
-                  <h3>{event.name} with {event.instructor}</h3>
-                  <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
-                  <p>{event.location}</p>
-                  <button disabled>Registered</button> {/* Disabled button */}
-                </div>
-              </div>
+            <EventCard 
+              key={index} 
+              event={event} 
+              isRegistered={registeredEvents.some(e => e.name === event.name)}
+              onRegister={() => addEvent(event)}
+              onUnregister={() => removeEvent(event)}
+            />
             );
           })
         ) : (
