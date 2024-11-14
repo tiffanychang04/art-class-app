@@ -1,0 +1,38 @@
+.create-event-form {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .create-event-form label {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .create-event-form input,
+  .create-event-form select,
+  .create-event-form button {
+    width: 100%; /* Adjust width as needed */
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .create-event-form button {
+    background-color: #7f6294;
+    color: white;
+    font-weight: bold;
+  }
+  
+  @media (min-width: 768px) {
+    .create-event-form input,
+    .create-event-form select {
+      width: 90%; /* Adjust form width on larger screens */
+    }
+  }
+  
