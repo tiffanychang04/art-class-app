@@ -379,7 +379,25 @@ input[type="file"] {
 
 /* Range sliders */
 input[type="range"] {
-  width: 100%;
+  -webkit-appearance: none;  /* Remove default styling in WebKit-based browsers */
+  appearance: none;  
+  height: 1px;  /* Set the height of the track */
+  background: #ddd;  /* Light gray background color for the track */
+  border-radius: 5px;  /* Round the corners of the track */
+  outline: none;  /* Remove the outline */
+  transition: background 0.3s;  /* Smooth transition for background */
+  margin: 10px;
+  padding: 0px;
+}
+
+/*range dot*/
+.popup-content input[type="range"]::-webkit-slider-thumb {
+  appearance: none; /* Remove default styling */
+  width: 15px; /* Thumb width */
+  height: 15px; /* Thumb height */
+  background-color: #7f6294; /* Thumb color */
+  border-radius: 50%; /* Make it round */
+  cursor: pointer; /* Change cursor to indicate interaction */
 }
 
 

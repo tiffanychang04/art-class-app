@@ -63,7 +63,7 @@ function SchedulePage() {
 
   // Close the popup when clicking outside
   const handleClickOutside = (e) => {
-    if (!e.target.closest('.popup') && !e.target.closest('button')) {
+    if (!e.target.closest('.popup-content') && !e.target.closest('button')) {
       setPopupVisible(false);
     }
   };
@@ -152,6 +152,7 @@ function SchedulePage() {
                 max="1440"
                 value={startTime}
                 onChange={(e) => setStartTime(Number(e.target.value))}
+                step="30"
               />
             </div>
 
@@ -163,7 +164,9 @@ function SchedulePage() {
                 max="1440"
                 value={endTime}
                 onChange={(e) => setEndTime(Number(e.target.value))}
+                step="30"
               />
+              
             </div>
 
             <button onClick={() => setPopupVisible(false)}>Apply</button>
