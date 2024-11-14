@@ -375,6 +375,7 @@ input[type="file"] {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  text-align: left;
 }
 
 /* Close Button */ 
@@ -416,14 +417,14 @@ input[type="range"] {
   display: flex;
   flex-direction: column;
   padding: 2px;
-  gap: 0px; /* Space between radio buttons */
-  border: black solid 1px;
+  gap: 2px; /* Space between radio buttons */
 }
 
 .radio-group input[type="radio"] {
-  margin: 10px; /* Space between the radio button and label */
+  margin: 0px; /* Space between the radio button and label */
   padding: 0px;
-  border: black solid 5px;
+  margin-left: 10px;
+  width: 10%;
 }
 
 .radio-group label {
@@ -433,7 +434,11 @@ input[type="range"] {
   display: flex;
   gap: 0px;
   align-items: center;
-  border: black solid 5px;
+}
+
+.radio-group span {
+  font-size: 16px; /* Style the label text */
+  margin: 0px
 }
 
 
