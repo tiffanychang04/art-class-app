@@ -288,7 +288,6 @@ function SchedulePage() {
               />
               
             </div>
-
             <button onClick={() => setTimePopupVisible(false)}>Apply</button>
         </Popup>
 
