@@ -41,8 +41,22 @@ function SchedulePage() {
       return matchesSearch && matchesCategory && matchesDateRange && matchesTimeRange && matchesDistance;
     });
 
-    setFilteredItems(filtered);
-  }, [searchTerm, categoryFilter, dateFilterStart, dateFilterEnd, startTime, endTime, distance]);
+    // Sorting logic based on selectedSortOption
+  const sorted = [...filtered].sort((a, b) => {
+    switch (selectedSortOption) {
+      case "Class Name":
+        return a.name.localeCompare(b.name);
+      case "Date":
+        return new Date(a.start_datetime) - new Date(b.start_datetime);
+      case "Distance":
+        return a.distance - b.distance; // Assumes `distance` is a numeric field in each event
+      default:
+        return 0;
+    }
+  });
+  
+  setFilteredItems(sorted);
+  }, [searchTerm, categoryFilter, dateFilterStart, dateFilterEnd, startTime, endTime, distance, selectedSortOption]);
 
   const handleCategoryClick = (category) => {
     setCategoryFilter(category);
