@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 function EventCard({ event, isRegistered, onRegister, onUnregister }) {
   // Parse the start_datetime string into a Date object
@@ -20,9 +21,9 @@ function EventCard({ event, isRegistered, onRegister, onUnregister }) {
           {/* Register or Unregister button */}
           <div className="register-button">
             {isRegistered ? (
-              <button onClick={onUnregister}>Unregister</button> // Show Unregister button if registered
+              <button onClick={onUnregister} class="cancel">Cancel</button> // Show Unregister button if registered
             ) : (
-              <button onClick={onRegister}>Register</button> // Show Register button if not registered
+              <button onClick={onRegister} class="register">Register</button> // Show Register button if not registered
             )}
           </div>
         </div>

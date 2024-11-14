@@ -334,7 +334,7 @@ input[type="file"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #7f6294;
+  background: #19445f;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -470,6 +470,36 @@ input[type="range"] {
   margin: 0px
 }
 
+/* Register button color */
 
+button.register {
+  background-color: #5a765b;
+}
+
+button.cancel {
+  background-color: #7f6294;
+}
+
+/* Reset Filter button */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.schedule-header h2 {
+  width: 50%;
+  margin: 20px 20px;
+}
+button.rounded {
+  display: flex;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  width: 105px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 20px;
+}
 
 

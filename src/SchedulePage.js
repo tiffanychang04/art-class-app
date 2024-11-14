@@ -111,6 +111,16 @@ function SchedulePage() {
     }
   };
 
+  const resetFilters = () => {
+    setSearchTerm('');
+    setCategoryFilter('');
+    setDateFilterStart('');
+    setDateFilterEnd('');
+    setStartTime(0); 
+    setEndTime(1440); 
+    setDistance(0);
+  }
+
 
   // Add event listener to handle click outside
   React.useEffect(() => {
@@ -121,7 +131,12 @@ function SchedulePage() {
   }, []);
   return (
     <div className="schedule-page">
+      <div class="schedule-header">
       <h2>Search Events</h2>
+      <button class="rounded" onClick={resetFilters}>
+        <p>Reset Filters</p>
+      </button>
+      </div>
       <Search searchTerm={searchTerm} onSearchChange={handleSearch} />
       
       {/* Date Range Filter */}
