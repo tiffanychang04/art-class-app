@@ -4,7 +4,6 @@ body {
   font-family: trebuchet ms;
   background-color: #f7f3eb; /* Light tan background */
   color: #19445f;
-  display: flex;
   justify-content: center;
 }
 
@@ -125,8 +124,6 @@ input::placeholder {
 .date-range-filter {
   display: flex;
   flex-direction: column;
-  width: 100%;
-
 }
 
 .date-labels {
@@ -139,57 +136,17 @@ input::placeholder {
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
+}
+
+.date-inputs input {
   text-align: center;
-}
-
-/* Style the dropdown container */
-.filters select {
-  width: 100%;
-  padding: 10px 40px 10px 10px; /* Add more padding on the right for the custom arrow */
-  font-size: 1em;
-  border: 1px solid #d1d1d6;
-  border-radius: 8px;
-  outline: none;
-  background-color: #f9f9f9; /* Background color */
-  color: #333; /* Text color */
-  cursor: pointer;
-  appearance: none; /* Remove default dropdown arrow */
-  -webkit-appearance: none; /* For Safari */
-  -moz-appearance: none; /* For Firefox */
-  position: relative; /* Needed for positioning the arrow */
-}
-
-/* Custom Arrow */
-.filters select::after {
-  content: 'HI'; /* Unicode for the down arrow */
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%); /* Vertically center the arrow */
-  font-size: 1.2em; /* Size of the arrow */
-  color: #333; /* Arrow color */
-  pointer-events: none; /* Prevent the arrow from interfering with the dropdown */
+  padding: 5px;
 }
 
 
-/* Style the dropdown options */
-.filters select option {
-  padding: 10px;
-  background-color: #ffffff;
-  color: #333;
-}
-
-/* Optional: Change the style when dropdown is focused */
-.filters select:focus {
-  border-color: #5b9bd5; /* Blue border when focused */
-  background-color: #e0f0ff; /* Light blue background */
-}
-
-/* Optional: Hover effect on the dropdown options */
-.filters select option:hover {
-  background-color: #e0e0e0; /* Light gray background on hover */
-}
 
 /* Event card styling */
 .event-card button {
@@ -209,40 +166,24 @@ input::placeholder {
 }
 
 
-/* src/App.css */
-.search-container {
+/* Search */
+
+.search {
+  position: relative;
+}
+
+.search input {
   width: 300px;
-  margin: 20px auto;
-  text-align: center;
+  padding-left: 30px; 
 }
 
-.search-input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-family: trebuchet ms;
-}
-
-.search-results {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.search-results li {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.search-results li:last-child {
-  border-bottom: none;
+.search-icon {
+  position: absolute;
+  left: 25px; /* Position the icon inside the input */
+  top: 55%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Prevent the icon from interfering with input interaction */
+  color: #9b9b9b;
 }
 
 .username {
@@ -341,4 +282,97 @@ input[type="file"] {
 .add-friend-button:hover {
   background-color: #5a765b;
 }
+
+/* Category Icons Section */
+
+.category-icons {
+   display: flex;
+   justify-content: space-between;
+   font-size: 0.8rem;
+}
+
+.category-icons div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+  width: 25%;
+}
+
+.category-icons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #7f6294;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #FFFFFF;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0px;
+}
+
+
+.category-icons button:hover {
+  color: #000; /* Darker color on hover */
+}
+
+/* Filter buttons */
+
+.filters button {
+  position: relative;
+  display: flex;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: #ffffff;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px 16px 10px 10px;
+  width: 105px;
+}
+
+.filters svg {
+  position: absolute;
+  color: #ffffff;
+  right: 5px; /* Position the icon inside the input */
+  top: 55%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Popup */
+/* The overlay background */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+/* Content inside the popup */
+.popup-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Range sliders */
+input[type="range"] {
+  width: 100%;
+}
+
+
+
 

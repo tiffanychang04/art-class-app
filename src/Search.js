@@ -1,5 +1,7 @@
 // Search.js
 import React from 'react';
+import { FaSearch } from 'react-icons/fa';
+import './App.css';
 
 function Search({ searchTerm, onSearchChange }) {
   return (
@@ -10,6 +12,9 @@ function Search({ searchTerm, onSearchChange }) {
         value={searchTerm}
         onChange={onSearchChange}
       />
+      <div className="search-icon">
+        <FaSearch />
+      </div>
     </div>
   );
 }
