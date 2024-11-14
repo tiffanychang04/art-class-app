@@ -12,11 +12,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="welcome-section">
-<<<<<<< HEAD
-        <h1>Welcome back, Iris!</h1>
-=======
         <h1>Welcome back, Sarah!</h1>
->>>>>>> 256cf69 (tiffany)
         <h2>Your Upcoming Events</h2>
       </div>
 
