@@ -11,19 +11,21 @@ function EventCard({ event, isRegistered, onRegister, onUnregister }) {
   const formattedEndTime = endDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
   return (
-    <div className="upcoming-events-card">
-      <div className="event-details">
-        <h3>{event.name} with {event.instructor}</h3>
-        <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
-        <p>{event.location}</p>
-        
-        {/* Register or Unregister button */}
-        <div className="register-button">
-          {isRegistered ? (
-            <button onClick={onUnregister}>Unregister</button> // Show Unregister button if registered
-          ) : (
-            <button onClick={onRegister}>Register</button> // Show Register button if not registered
-          )}
+    <div className="upcoming-events-card" style={{ backgroundImage: `url(${event.backgroundImage})` }}>
+      <div className = "event-overlay">
+        <div className="event-details">
+          <h3>{event.name} with {event.instructor}</h3>
+          <p>{formattedStartDate}, {formattedStartTime}–{formattedEndTime}</p>
+          <p>{event.location}</p>
+          
+          {/* Register or Unregister button */}
+          <div className="register-button">
+            {isRegistered ? (
+              <button onClick={onUnregister}>Unregister</button> // Show Unregister button if registered
+            ) : (
+              <button onClick={onRegister}>Register</button> // Show Register button if not registered
+            )}
+          </div>
         </div>
       </div>
     </div>
