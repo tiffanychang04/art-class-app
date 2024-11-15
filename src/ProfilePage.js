@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { FaHome, FaUserFriends, FaCalendarAlt, FaBell, FaUserCircle } from 'react-icons/fa';
 
 function ProfilePage() {
   const [username, setUsername] = useState('Sarah Leafstrand');

@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import HomePage from './HomePage';
 import FriendsPage from './FriendsPage';
 import SchedulePage from './SchedulePage';
-import NotificationPage from './NotificationPage';
+import CreateEventForm from './CreateEventForm';
 import ProfilePage from './ProfilePage';
 import './App.css';
 
@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/friends" element={<FriendsPage />} />
+          <Route path="/create" element={<CreateEventForm />} />
           <Route path="/schedule" element={<SchedulePage />} />
-          <Route path="/notifications" element={<NotificationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
         <Navbar />

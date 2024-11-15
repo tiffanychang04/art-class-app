@@ -90,4 +90,8 @@ export const items = [
       "backgroundImage": "https://media.cca.edu/images/Ceramics_x_Game_Arts-SP23-2024_06-jrl.min-1040x585.jpg"
     }
   ];
+
+  export function addItem(newItem) {
+    items.push(newItem);
+  }
   

@@ -1,11 +1,10 @@
 .create-event-form {
-    background: #FFFFFF;
     padding: 20px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Arial', sans-serif;
+    font-family: trebuchet ms;
   }
   
   .create-event-form label {

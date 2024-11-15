@@ -24,7 +24,6 @@ function SchedulePage() {
   const [isCreateEventVisible, setCreateEventVisible] = useState(false); // State to manage visibility of CreateEventForm
 
 
-  // Filter items based on search, category, and date filters
   useEffect(() => {
     const filtered = items.filter((event) => {
       const matchesCategory = categoryFilter ? event.category === categoryFilter : true;
@@ -45,7 +44,6 @@ function SchedulePage() {
       return matchesSearch && matchesCategory && matchesDateRange && matchesTimeRange && matchesDistance;
     });
 
-    // Sorting logic based on selectedSortOption
   const sorted = [...filtered].sort((a, b) => {
     switch (selectedSortOption) {
       case "Class Name":
@@ -71,7 +69,6 @@ function SchedulePage() {
   };
 
   
-    // Handle search term change
     const handleSearch = (event) => {
       const query = event.target.value;
       setSearchTerm(query);
@@ -79,7 +76,7 @@ function SchedulePage() {
 
   const [isTimePopupVisible, setTimePopupVisible] = useState(false); // State to toggle popup visibility
   
-  // Convert time in minutes to HH:MM format
+
   const convertMinutesToTime = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
@@ -155,9 +152,6 @@ function SchedulePage() {
     <div className="schedule-page">
       <div class="schedule-header">
       <h2 style={{ whiteSpace: 'nowrap' }}>Search Events</h2>
-      <button class="rounded" onClick={toggleCreateEventForm}>
-        <FaPlus /> New Event
-        </button>
       </div>
       <Search searchTerm={searchTerm} onSearchChange={handleSearch} />
       
@@ -310,10 +304,6 @@ function SchedulePage() {
             <button onClick={() => setDistancePopupVisible(false)}>Apply</button>
         </Popup>
 
-
-      <Popup isOpen={isCreateEventVisible} onClose={toggleCreateEventForm} title="Create New Event">
-      <CreateEventForm onSave={handleSaveEvent} />
-      </Popup>
 
       {/* Nearby Events */}
       <h2>Nearby Events</h2>
