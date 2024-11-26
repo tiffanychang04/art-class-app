@@ -216,10 +216,10 @@ input::placeholder {
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  padding: 20px;
-  padding-top: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 12px;
+  padding-top: 30px;
+  padding-left: 12px;
+  padding-right: 12px;
   margin: 0px 5px;
   text-align: center;
   flex: 1 1 calc(50% - 30px);
