@@ -150,7 +150,27 @@ input::placeholder {
 
 
 /* Event card styling */
-.upcoming-events-card {
+
+.event-details {
+  padding: 10px; 
+  border-radius: 5px; 
+  background-color: white;
+}
+
+ .upcoming-events-card button {
+  background-color: #7f6294;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: trebuchet ms;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* LIST VIEW */
+/* .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -163,12 +183,6 @@ input::placeholder {
   text-align: center;
 }
 
-.event-details {
-  padding: 10px; 
-  border-radius: 5px; 
-  background-color: white;
-}
-
 .event-details h3 {
   margin-top: 0;
   font-size: 1.2em;
@@ -179,24 +193,46 @@ input::placeholder {
   font-size: 14px;
 }
 
-.upcoming-events-card button {
-  background-color: #7f6294;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: trebuchet ms;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
 .nearby-events {
   display: flex;
   flex-direction: column;
   gap: 15px;
+} */
+
+/* TILE VIEW */
+
+.event-details h3 {
+  margin-top: 0;
+  font-size: 0.8em;
 }
 
+.event-details p {
+  margin: 5px 0;
+  font-size: 11px;
+}
+
+.upcoming-events-card {
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 20px;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0px 5px;
+  text-align: center;
+  flex: 1 1 calc(50% - 30px);
+  box-sizing: border-box;
+  max-width: calc(50% - 30px);
+}
+
+.nearby-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
 
 /* Search */
 
