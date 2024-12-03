@@ -22,6 +22,8 @@ function SchedulePage() {
   const [distance, setDistance] = useState(0);
   const [selectedSortOption, setSelectedSortOption] = useState('');
   const [isCreateEventVisible, setCreateEventVisible] = useState(false); // State to manage visibility of CreateEventForm
+  const [viewMode, setViewMode] = useState('grid'); // Added state to toggle views
+
 
 
   useEffect(() => {
@@ -43,6 +45,8 @@ function SchedulePage() {
       const matchesDistance = distance ? event.distance <= distance : true;
       return matchesSearch && matchesCategory && matchesDateRange && matchesTimeRange && matchesDistance;
     });
+  
+  
 
   const sorted = [...filtered].sort((a, b) => {
     switch (selectedSortOption) {
@@ -57,11 +61,16 @@ function SchedulePage() {
     }
   });
   
+
   setFilteredItems(sorted);
   }, [searchTerm, categoryFilter, dateFilterStart, dateFilterEnd, startTime, endTime, distance, selectedSortOption]);
 
   const handleCategoryClick = (category) => {
     setCategoryFilter(category);
+  };
+
+  const toggleViewMode = () => {
+    setViewMode(viewMode === 'grid' ? 'list' : 'grid');
   };
 
   const handleSortOption = (event) => {
@@ -307,7 +316,10 @@ function SchedulePage() {
 
       {/* Nearby Events */}
       <h2>Nearby Events</h2>
-      <div className="nearby-events">
+      <div className={`nearby-events ${viewMode}-view`}>
+        <button onClick={toggleViewMode} className="view-toggle">
+          {viewMode === 'grid' ? 'List View' : 'Grid'}
+        </button>
         {filteredItems.length > 0 ? (
           filteredItems.map((event, index) => (
             <EventCard 

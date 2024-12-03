@@ -149,15 +149,14 @@ input::placeholder {
 
 
 
-/* Event card styling */
-
+/* Base Styles */
 .event-details {
   padding: 10px; 
   border-radius: 5px; 
   background-color: white;
 }
 
- .upcoming-events-card button {
+.upcoming-events-card button {
   background-color: #7f6294;
   color: #ffffff;
   font-weight: bold;
@@ -169,8 +168,8 @@ input::placeholder {
   transition: background-color 0.3s;
 }
 
-/* LIST VIEW */
-/* .upcoming-events-card {
+/* List View Styles */
+.list-view .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -183,35 +182,34 @@ input::placeholder {
   text-align: center;
 }
 
-.event-details h3 {
+.list-view .event-details h3 {
   margin-top: 0;
   font-size: 1.2em;
 }
 
-.event-details p {
+.list-view .event-details p {
   margin: 5px 0;
   font-size: 14px;
 }
 
-.nearby-events {
+.list-view .nearby-events {
   display: flex;
   flex-direction: column;
   gap: 15px;
-} */
+} 
 
-/* TILE VIEW */
-
-.event-details h3 {
+/* Grid View Styles */
+.grid-view .event-details h3 {
   margin-top: 0;
   font-size: 0.8em;
 }
 
-.event-details p {
+.grid-view .event-details p {
   margin: 5px 0;
   font-size: 11px;
 }
 
-.upcoming-events-card {
+.grid-view .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -227,7 +225,7 @@ input::placeholder {
   max-width: calc(50% - 30px);
 }
 
-.nearby-events {
+.grid-view .nearby-events {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
