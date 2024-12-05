@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FaPaintBrush, FaPencilAlt, FaCamera} from 'react-icons/fa'; // Import category icons
 import { GiPaintedPottery } from "react-icons/gi";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { CiGrid2H } from "react-icons/ci";
+import { CiGrid41 } from "react-icons/ci";
 import { items } from './events'; // Import the events array
 import EventCard from './EventCard'; // Import the EventCard component
 import Search from './Search'; // Import the Search component
@@ -149,11 +151,11 @@ function SchedulePage() {
     if (container.classList.contains('list-view')) {
       container.classList.remove('list-view');
       container.classList.add('tile-view');
-      button.textContent = 'Switch to List View';
+      button.textContent = 'List View';
     } else {
       container.classList.remove('tile-view');
       container.classList.add('list-view');
-      button.textContent = 'Switch to Tile View';
+      button.textContent = 'Tile View';
     }
   }
 
@@ -322,9 +324,12 @@ function SchedulePage() {
 
 
       {/* Nearby Events */}
-      <h2>Nearby Events</h2>
+      
       <div id="eventsContainer" class="list-view">
-      <button id="toggleView" onClick={toggleView}>Switch to Tile View</button>
+      <div className="schedule-header">
+      <h2 style={{ whiteSpace: 'nowrap' }} >Nearby Events</h2>
+      <button id="toggleView" onClick={toggleView} class="rounded">Tile View</button>
+      </div>
         <div className="events-display">
           {filteredItems.length > 0 ? (
             filteredItems.map((event, index) => (
