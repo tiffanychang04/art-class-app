@@ -15,8 +15,9 @@ function HomePage() {
         <h1>Welcome back, Sarah!</h1>
         <h2>Your Upcoming Events</h2>
       </div>
-
-      <div className="registered-events">
+      
+      <div class="list-view">
+      <div className="events-display">
         {registeredEvents.length > 0 ? (
           registeredEvents.map((event, index) => {
             // Format start time and end time like before
@@ -39,6 +40,7 @@ function HomePage() {
         ) : (
           <p>No registered events.</p>
         )}
+      </div>
       </div>
 
       <h2>Your Feed</h2>

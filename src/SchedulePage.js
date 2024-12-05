@@ -324,7 +324,7 @@ function SchedulePage() {
       <h2>Nearby Events</h2>
       <div id="eventsContainer" class="list-view">
       <button id="toggleView" onClick={toggleView}>Switch to Tile View</button>
-        <div className="nearby-events">
+        <div className="events-display">
           {filteredItems.length > 0 ? (
             filteredItems.map((event, index) => (
               <EventCard 
