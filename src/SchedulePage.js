@@ -26,9 +26,22 @@ function SchedulePage() {
   const [isCreateEventVisible, setCreateEventVisible] = useState(false); // State to manage visibility of CreateEventForm
   const [filtersVisible, setFiltersVisible] = useState(true); // State to toggle filter visibility
 
+  const fillerFriends = ["Suzanna Wang", "Gaby Tran", "Tiffany Chang", "Alice Johnson", "Jeremy Smith", "Sam Liu"]; // Filler friend data
+
+  const itemsWithFriends = items.map((event) => {
+    // Randomly select 2 or 3 friends
+    const randomFriendCount = Math.floor(Math.random() * 2) + 2; // Randomly choose 2 or 3
+    const shuffledFriends = fillerFriends.sort(() => Math.random() - 0.5); // Shuffle the array
+    const selectedFriends = shuffledFriends.slice(0, randomFriendCount); // Take the first 2-3 friends from shuffled array
+  
+    return {
+      ...event,
+      friends: selectedFriends,
+    };
+  });
 
   useEffect(() => {
-    const filtered = items.filter((event) => {
+    const filtered = itemsWithFriends.filter((event) => {
       const matchesCategory = categoryFilter ? event.category === categoryFilter : true;
       const eventDate = new Date(event.start_datetime);
       const matchesDateRange = (
@@ -336,6 +349,7 @@ function SchedulePage() {
               <EventCard 
                 key={index} 
                 event={event} 
+                friends={event.friends} // Pass the friends array
                 isRegistered={registeredEvents.some(e => e.name === event.name)}
                 onRegister={() => addEvent(event)}
                 onUnregister={() => removeEvent(event)}

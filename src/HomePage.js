@@ -31,6 +31,7 @@ function HomePage() {
             <EventCard 
               key={index} 
               event={event} 
+              friends={event.friends || []} 
               isRegistered={registeredEvents.some(e => e.name === event.name)}
               onRegister={() => addEvent(event)}
               onUnregister={() => removeEvent(event)}
