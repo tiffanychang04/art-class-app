@@ -170,7 +170,7 @@ input::placeholder {
 }
 
 /* LIST VIEW */
-/* .upcoming-events-card {
+ .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -197,11 +197,11 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 15px;
-} */
+} 
 
 /* TILE VIEW */
 
-.event-details h3 {
+/*.event-details h3 {
   margin-top: 0;
   font-size: 0.8em;
 }
@@ -232,7 +232,7 @@ input::placeholder {
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-}
+} */
 
 /* Search */
 
