@@ -170,7 +170,7 @@ input::placeholder {
 }
 
 /* LIST VIEW */
- .upcoming-events-card {
+.list-view .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -183,35 +183,34 @@ input::placeholder {
   text-align: center;
 }
 
-.event-details h3 {
+.list-view .event-details h3 {
   margin-top: 0;
   font-size: 1.2em;
 }
 
-.event-details p {
+.list-view .event-details p {
   margin: 5px 0;
   font-size: 14px;
 }
 
-.nearby-events {
+.list-view .nearby-events {
   display: flex;
   flex-direction: column;
   gap: 15px;
-} 
+}
 
 /* TILE VIEW */
-
-/*.event-details h3 {
+.tile-view .event-details h3 {
   margin-top: 0;
   font-size: 0.8em;
 }
 
-.event-details p {
+.tile-view .event-details p {
   margin: 5px 0;
   font-size: 11px;
 }
 
-.upcoming-events-card {
+.tile-view .upcoming-events-card {
   border-radius: 10px;
   background-size: cover;
   background-position: center;
@@ -227,12 +226,13 @@ input::placeholder {
   max-width: calc(50% - 30px);
 }
 
-.nearby-events {
+.tile-view .nearby-events {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
-} */
+}
+
 
 /* Search */
 

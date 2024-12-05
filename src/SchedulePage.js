@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaPaintBrush, FaPencilAlt, FaCamera, FaPlus } from 'react-icons/fa'; // Import category icons
+import { FaPaintBrush, FaPencilAlt, FaCamera} from 'react-icons/fa'; // Import category icons
 import { GiPaintedPottery } from "react-icons/gi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { items } from './events'; // Import the events array
@@ -140,6 +140,21 @@ function SchedulePage() {
   const toggleCreateEventForm = () => {
     setCreateEventVisible(!isCreateEventVisible);
   };
+
+  const toggleView = () => {
+    const container = document.getElementById('eventsContainer');
+    const button = document.getElementById('toggleView');
+
+    if (container.classList.contains('list-view')) {
+      container.classList.remove('list-view');
+      container.classList.add('tile-view');
+      button.textContent = 'Switch to List View';
+    } else {
+      container.classList.remove('tile-view');
+      container.classList.add('list-view');
+      button.textContent = 'Switch to Tile View';
+    }
+  }
 
   // Add event listener to handle click outside
   React.useEffect(() => {
@@ -307,20 +322,23 @@ function SchedulePage() {
 
       {/* Nearby Events */}
       <h2>Nearby Events</h2>
-      <div className="nearby-events">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((event, index) => (
-            <EventCard 
-              key={index} 
-              event={event} 
-              isRegistered={registeredEvents.some(e => e.name === event.name)}
-              onRegister={() => addEvent(event)}
-              onUnregister={() => removeEvent(event)}
-            />
-          ))
-        ) : (
-          <p>No events found.</p>
-        )}
+      <div id="eventsContainer" class="list-view">
+      <button id="toggleView" onClick={toggleView}>Switch to Tile View</button>
+        <div className="nearby-events">
+          {filteredItems.length > 0 ? (
+            filteredItems.map((event, index) => (
+              <EventCard 
+                key={index} 
+                event={event} 
+                isRegistered={registeredEvents.some(e => e.name === event.name)}
+                onRegister={() => addEvent(event)}
+                onUnregister={() => removeEvent(event)}
+              />
+            ))
+          ) : (
+            <p>No events found.</p>
+          )}
+        </div>
       </div>
     </div>
   );
