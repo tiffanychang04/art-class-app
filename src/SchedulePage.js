@@ -51,7 +51,7 @@ function SchedulePage() {
       case "Date":
         return new Date(a.start_datetime) - new Date(b.start_datetime);
       case "Distance":
-        return a.distance - b.distance; // Assumes `distance` is a numeric field in each event
+        return a.distance - b.distance; // Assumes distance is a numeric field in each event
       default:
         return 0;
     }
