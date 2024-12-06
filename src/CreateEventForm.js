@@ -91,6 +91,7 @@ function CreateEventForm({ onSave }) {
                 <button type="submit">Create Event</button>
             </form>
             
+            <div class="list-view">
             <h2>Your Events</h2>
             {events.length === 0 ? (
                 <p>No events yet!</p>
@@ -105,6 +106,7 @@ function CreateEventForm({ onSave }) {
                     />
                 ))
             )}
+        </div>
         </div>    
     );
 }
