@@ -48,7 +48,7 @@ function HomePage() {
       <div className="feed-section card">
       <div className="activity-item">
       <div className="initials-circle">{getInitials("Maya Johnson")}</div>
-        <p>Maya attended Portrait Drawings, hosted by George.</p>
+        <p>Maya attended Drawing 101, hosted by George.</p>
       </div>
       </div>
 
